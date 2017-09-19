@@ -16,14 +16,9 @@ class ViewController: UIViewController {
     @IBOutlet var buttonReturn:UIButton!
     
     // Define Operator Tags
-    let ADDITION = 0
-    let SUBSTRACTION = 1
-    let MULTIPLICATION = 2
-    let DIVISION = 3
-    let REMAINDER = 4
-    
+    var currentOperation:CalculatorOperation = CalculatorOperation.unspecified
+   
     // Define Phase Tags
-    var currentOperation = -1 // uses the value of `Operator Tag`
     var isResultPhase = false // if '=' button was clicked
     var isOperationClicked = false // if one of "+ , - , /, %"  was clicked
     
@@ -56,17 +51,17 @@ class ViewController: UIViewController {
         let operation = btn.titleLabel!.text!
         switch operation{
         case "+":
-            currentOperation = ADDITION
+            currentOperation = .addition
         case "-":
-            currentOperation = SUBSTRACTION
+            currentOperation = .substraction
         case "/":
-            currentOperation = DIVISION
+            currentOperation = .division
         case "%":
-            currentOperation = REMAINDER
+            currentOperation = .remainder
         case "X":
-            currentOperation = MULTIPLICATION
+            currentOperation = .multiplication
         default:
-            print("Unidentified Operation")
+            print("Error: Unidentified Operation")
         }
         
         if(isOperationClicked){ // Exception Handler
@@ -83,15 +78,15 @@ class ViewController: UIViewController {
         var resultNum = 0.0
         isResultPhase = true
         switch currentOperation {
-        case ADDITION:
+        case .addition:
             resultNum = Double(displayDigits)! + Double(historyDigits)!
-        case SUBSTRACTION:
+        case .substraction:
             resultNum
                 = Double(historyDigits)! - Double(displayDigits)!
-        case MULTIPLICATION:
+        case .multiplication:
             resultNum
                 = Double(historyDigits)! * Double(displayDigits)!
-        case DIVISION:
+        case .division:
             resultNum = Double(historyDigits)! / Double(displayDigits)!
         default:
             print("Error")

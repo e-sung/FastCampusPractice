@@ -12,4 +12,6 @@ enum CalculatorOperation{
     case substraction
     case multiplication
     case division
+    case remainder
+    case unspecified
 }
