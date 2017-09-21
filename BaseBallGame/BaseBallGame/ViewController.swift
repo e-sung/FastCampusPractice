@@ -37,20 +37,20 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             }
             
             // Generate ResultMessage based on Calculated Scores
+            let strikes = (scores?.occurenceOf(item: Score.strike))!
+            let balls = (scores?.occurenceOf(item: Score.ball))!
+            let outs = (scores?.occurenceOf(item: Score.out))!
             var resultMessage = ""
-            resultMessage += "Strike : \(Util.count(item: Score.strike, in: scores!))\n"
-            resultMessage += "Ball : \(Util.count(item: Score.ball, in: scores!))\n"
-            resultMessage += "Out : \(Util.count(item: Score.out, in: scores!))"
+            resultMessage += "Strikes = \(strikes)\n"
+            resultMessage += "Balls = \(balls)\n"
+            resultMessage += "Outs = \(outs)"
+
             resultLabel.text = resultMessage
             
         }else{ // If Duplication was Found
-            
             // Show Alert Message
-            let alertController = UIAlertController(title: "Warning", message: "Every choice should be Unique", preferredStyle: .alert)
-            
-            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-            alertController.addAction(defaultAction)
-            self.present(alertController, animated: true, completion: nil)
+            let warningPopup = AlertUtil.init().getPopup()
+            self.present(warningPopup, animated: true, completion: nil)
         }
     }
     

@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F01A735A1F73DDBF00FEED07 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01A73591F73DDBF00FEED07 /* Util.swift */; };
+		F01A735A1F73DDBF00FEED07 /* ArrayUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01A73591F73DDBF00FEED07 /* ArrayUtil.swift */; };
+		F01A73601F73E9FA00FEED07 /* AlertUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01A735F1F73E9FA00FEED07 /* AlertUtil.swift */; };
 		F02680B51F73479E009BC9FE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02680B41F73479E009BC9FE /* AppDelegate.swift */; };
 		F02680B71F73479E009BC9FE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02680B61F73479E009BC9FE /* ViewController.swift */; };
 		F02680BA1F73479E009BC9FE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F02680B81F73479E009BC9FE /* Main.storyboard */; };
@@ -17,7 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		F01A73591F73DDBF00FEED07 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Util.swift; path = ../Util.swift; sourceTree = "<group>"; };
+		F01A73591F73DDBF00FEED07 /* ArrayUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArrayUtil.swift; path = ../ArrayUtil.swift; sourceTree = "<group>"; };
+		F01A735F1F73E9FA00FEED07 /* AlertUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlertUtil.swift; path = ../AlertUtil.swift; sourceTree = "<group>"; };
 		F02680B11F73479E009BC9FE /* BaseBallGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BaseBallGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F02680B41F73479E009BC9FE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F02680B61F73479E009BC9FE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -58,7 +60,8 @@
 		F02680B31F73479E009BC9FE /* BaseBallGame */ = {
 			isa = PBXGroup;
 			children = (
-				F01A73591F73DDBF00FEED07 /* Util.swift */,
+				F01A73591F73DDBF00FEED07 /* ArrayUtil.swift */,
+				F01A735F1F73E9FA00FEED07 /* AlertUtil.swift */,
 				F02680B41F73479E009BC9FE /* AppDelegate.swift */,
 				F02680B61F73479E009BC9FE /* ViewController.swift */,
 				F02680B81F73479E009BC9FE /* Main.storyboard */,
@@ -145,7 +148,8 @@
 				F02680B71F73479E009BC9FE /* ViewController.swift in Sources */,
 				F02680E51F738E34009BC9FE /* Score.swift in Sources */,
 				F02680B51F73479E009BC9FE /* AppDelegate.swift in Sources */,
-				F01A735A1F73DDBF00FEED07 /* Util.swift in Sources */,
+				F01A73601F73E9FA00FEED07 /* AlertUtil.swift in Sources */,
+				F01A735A1F73DDBF00FEED07 /* ArrayUtil.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
