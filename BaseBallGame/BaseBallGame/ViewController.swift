@@ -14,7 +14,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     private var game:Game
     private var pickerArray:[UIPickerView]?
     
-    // Mark : Initialzation
+    // MARK: Initialzation
     required init?(coder aDecoder: NSCoder) {
         game = Game()
         super.init(coder: aDecoder)
@@ -23,13 +23,14 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     //MARK: IBOutlets
     @IBOutlet var btnPlayBall: UIButton!
     @IBOutlet var resultLabel: UILabel!
+    @IBOutlet var remainChanceLabel: UILabel!
     @IBOutlet var picker0:UIPickerView!
     @IBOutlet var picker1:UIPickerView!
     @IBOutlet var picker2:UIPickerView!
     
     //MARK: IBActions
     @IBAction func handleStart(btn:UIButton){
-        game.startGame()
+        game.startNewGame() //Make new Answers, reset userGuesses, etc...
         for picker in pickerArray!{
             picker.isUserInteractionEnabled = true
         }
@@ -39,23 +40,28 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         
         if(game.userGuesses.hasDuplicatedItem){
             // Show Alert Message
-            let warningPopup = AlertUtil().alertController
+            let warningPopup = AlertUtil().duplicateWarningController
             self.present(warningPopup, animated: true, completion: nil)
         }else{
-            // Show game score on resultLabel
-            let scoreResult = game.scores
-            let resultText = game.generateScoreMessage(with: scoreResult)
-            resultLabel.text = resultText
+            resultLabel.text = game.scoreMessage
+            game.chances -= 1
+            remainChanceLabel.text = "\(game.chances)"
+            
+            // If out of chances, show warningPopup and start new game
+            if(game.chances == 0){
+                let warningPopup = AlertUtil().outOfChanceWarningController
+                self.present(warningPopup, animated: true, completion:initView)
+                game.startNewGame()
+            }
         }
     }
     
-    // Mark : ViewLifeCycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        pickerArray = [picker0,picker1,picker2]
+    // Mark : ViewController Methods
+    private func initView(){
         for picker in pickerArray!{
-            picker.selectRow(5000, inComponent: 0, animated: false)
+            picker.selectRow(5000, inComponent: 0, animated: true)
         }
+        resultLabel.text = ""
     }
     
     // MARK: PickerView Methods
@@ -73,5 +79,12 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
+    }
+    
+    // MARK: ViewLifeCycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        pickerArray = [picker0,picker1,picker2]
+        initView()
     }
 }

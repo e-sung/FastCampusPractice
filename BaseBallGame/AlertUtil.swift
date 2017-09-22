@@ -8,14 +8,17 @@
 import UIKit
 import Foundation
 class AlertUtil{
-    let alertController:UIAlertController
+    let duplicateWarningController:UIAlertController
+    let outOfChanceWarningController:UIAlertController
     private let defaultAction:UIAlertAction
     
     init() {
-        alertController = UIAlertController(title: "Warning", message: "Every choice should be Unique", preferredStyle: .alert)
+        duplicateWarningController = UIAlertController(title: "Warning", message: "Every choice should be Unique", preferredStyle: .alert)
+        outOfChanceWarningController = UIAlertController(title: "Warning", message: "Out Of Chance! Starting New Game!", preferredStyle: .alert)
         
         defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         
-        alertController.addAction(defaultAction)
+        duplicateWarningController.addAction(defaultAction)
+        outOfChanceWarningController.addAction(defaultAction)
     }
 }

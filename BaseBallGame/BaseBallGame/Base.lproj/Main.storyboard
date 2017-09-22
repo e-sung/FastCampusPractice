@@ -70,10 +70,10 @@
                                     <action selector="handleStartWithBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wBt-R3-cMq"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gsm-Yg-PLf">
-                                <rect key="frame" x="73" y="430" width="91" height="56"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="20" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cek-7j-MNY">
+                                <rect key="frame" x="204" y="430" width="46" height="56"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -91,6 +91,13 @@
                                     <action selector="handlePlayBallWithBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Xt2-yb-evQ"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Chances :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gsm-Yg-PLf">
+                                <rect key="frame" x="89" y="430" width="107" height="56"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -99,6 +106,7 @@
                         <outlet property="picker0" destination="tpy-av-OcM" id="rHZ-xG-0gR"/>
                         <outlet property="picker1" destination="BYN-7Y-Azw" id="KdD-yq-Sr6"/>
                         <outlet property="picker2" destination="FJs-MU-6RE" id="rMX-dv-lmX"/>
+                        <outlet property="remainChanceLabel" destination="cek-7j-MNY" id="hCP-QJ-FuF"/>
                         <outlet property="resultLabel" destination="jtg-0L-fam" id="tNA-5K-YXc"/>
                     </connections>
                 </viewController>
