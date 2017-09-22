@@ -57,17 +57,4 @@ class Game{
         chances = 5
         print(answer)
     }
-    
-    func generateScoreMessage(with scoreArray:[Score])->String{
-        //Generate ResultMessage based on Calculated Scores
-        let strikes = (scoreArray.occurenceOf(item: Score.strike))
-        let balls = (scoreArray.occurenceOf(item: Score.ball))
-        let outs = (scoreArray.occurenceOf(item: Score.out))
-        var resultMessage = ""
-        resultMessage += "Strikes = \(strikes)\n"
-        resultMessage += "Balls = \(balls)\n"
-        resultMessage += "Outs = \(outs)"
-        return resultMessage
-        
-    }
 }
