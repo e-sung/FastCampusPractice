@@ -20,12 +20,14 @@ public extension Array where Element:Equatable{
         return counter
     }
     
-    func hasDuplicatedItem()->Int{
-        for i in 0..<self.count{
-            if self.occurenceOf(item: self[i]) > 1{
-                return i
+    var hasDuplicatedItem:Bool{
+        get{
+            for i in 0..<self.count{
+                if self.occurenceOf(item: self[i]) > 1{
+                    return true
+                }
             }
+            return false
         }
-        return -1
     }
 }

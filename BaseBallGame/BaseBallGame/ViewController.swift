@@ -10,66 +10,46 @@ import UIKit
 
 class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
+    // MARK: Properties
+    private var game:Game
+    private var pickerArray:[UIPickerView]?
+    
+    // Mark : Initialzation
+    required init?(coder aDecoder: NSCoder) {
+        game = Game()
+        super.init(coder: aDecoder)
+    }
+    
     //MARK: IBOutlets
-    @IBOutlet var resultLabel: UILabel!
     @IBOutlet var btnPlayBall: UIButton!
+    @IBOutlet var resultLabel: UILabel!
     @IBOutlet var picker0:UIPickerView!
     @IBOutlet var picker1:UIPickerView!
     @IBOutlet var picker2:UIPickerView!
     
     //MARK: IBActions
-    @IBAction func handlePlayBall(btn:UIButton){
-        
-        // check Duplication
-        let duplicatedIndex = getDuplicatedIndex(array: userGuess)
-        
-        if(duplicatedIndex == -1){
-            
-            // If No Duplication was Found, Calculate Scores
-            for i in 0..<answer.count{
-                if answer[i] == userGuess[i]{
-                    scores?[i] = Score.strike
-                }else if answer.contains(userGuess[i]){
-                    scores?[i] = Score.ball
-                }else{
-                    scores?[i] = Score.out
-                }
-            }
-            
-            // Generate ResultMessage based on Calculated Scores
-            let strikes = (scores?.occurenceOf(item: Score.strike))!
-            let balls = (scores?.occurenceOf(item: Score.ball))!
-            let outs = (scores?.occurenceOf(item: Score.out))!
-            var resultMessage = ""
-            resultMessage += "Strikes = \(strikes)\n"
-            resultMessage += "Balls = \(balls)\n"
-            resultMessage += "Outs = \(outs)"
-
-            resultLabel.text = resultMessage
-            
-        }else{ // If Duplication was Found
-            // Show Alert Message
-            let warningPopup = AlertUtil.init().getPopup()
-            self.present(warningPopup, animated: true, completion: nil)
-        }
-    }
-    
     @IBAction func handleStart(btn:UIButton){
-        // Initialize Game
-        makeAnswer()
-        userGuess = [0,0,0]
-        scores = [Score.unset,Score.unset,Score.unset]
+        game.startGame()
         for picker in pickerArray!{
             picker.isUserInteractionEnabled = true
         }
     }
     
-    // MARK: Properties
-    private var answer = [-1,-1,-1]
-    private var userGuess = [-1,-1,-1]
-    private var scores:[Score]?
-    private var pickerArray:[UIPickerView]?
+    @IBAction func handlePlayBall(btn:UIButton){
+        
+        if(game.userGuesses.hasDuplicatedItem){
+            // Show Alert Message
+            let warningPopup = AlertUtil().alertController
+            self.present(warningPopup, animated: true, completion: nil)
+        }else{
+            // Show game score on resultLabel
+            let scoreResult = game.scores
+            let resultText = game.generateScoreMessage(with: scoreResult)
+            resultLabel.text = resultText
+        }
+    }
     
+    // Mark : ViewLifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         pickerArray = [picker0,picker1,picker2]
@@ -78,20 +58,9 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         }
     }
     
-    // MARK: Methods
-    private func makeAnswer(){
-        
-        for i in 0..<answer.count{
-            let randomNumber = Int(arc4random_uniform(10))
-            if !answer.contains(randomNumber){
-                answer[i] = randomNumber
-            }
-        }
-        print(answer)
-    }
-    
+    // MARK: PickerView Methods
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return 100000
+        return 10000
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
@@ -99,26 +68,10 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        userGuess[pickerView.tag] = row%10
+        game.userGuesses[pickerView.tag] = row%10
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
-    
-    private func getDuplicatedIndex(array:[Int])->Int{
-        var counter = [0,0,0]
-        for i in 0..<array.count{
-            for j in 0..<array.count{
-                if array[i] == array[j]{
-                    counter[i] += 1
-                    if counter[i] > 1{
-                        return i
-                    }
-                }
-            }
-        }
-        return -1
-    }
 }
-

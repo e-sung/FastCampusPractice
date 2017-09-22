@@ -8,10 +8,7 @@
 import UIKit
 import Foundation
 class AlertUtil{
-    // Show Alert Message
-    
-    
-    private let alertController:UIAlertController
+    let alertController:UIAlertController
     private let defaultAction:UIAlertAction
     
     init() {
@@ -21,9 +18,4 @@ class AlertUtil{
         
         alertController.addAction(defaultAction)
     }
-    
-    public func getPopup()-> UIAlertController{
-        return alertController
-    }
-    
 }
