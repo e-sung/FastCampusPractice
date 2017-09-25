@@ -11,15 +11,9 @@ import UIKit
 class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
     // MARK: Properties
-    private var game:Game
+    private var game:Game = Game()
     private var pickerArray:[UIPickerView]?
-    
-    // MARK: Initialzation
-    required init?(coder aDecoder: NSCoder) {
-        game = Game()
-        super.init(coder: aDecoder)
-    }
-    
+   
     //MARK: IBOutlets
     @IBOutlet var btnPlayBall: UIButton!
     @IBOutlet var resultLabel: UILabel!
